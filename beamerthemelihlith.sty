@@ -1,0 +1,108 @@
+%\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/theme/beamerthemecea.sty,v 0.1 2006/08/21 23:33:07 fgadaud Exp $
+
+% Copyright 2006 by Fabrice Gadaud
+% Copyright 2004 by Madhusudan Singh <madhusudan.singh@gmail.com>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+% modified by annlor, 2016
+
+% pour faire des figures pour la page de titre
+\usepackage{tikz}
+\usepackage{pdfrender}
+\usepackage{helvet}
+
+\usetikzlibrary{shapes,arrows}
+
+
+% les polices des éléments de la page de titre
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\footnotesize\itshape}
+\setbeamerfont{title}{size=\bf\fontsize{24}{32}}%\bfseries}
+\setbeamerfont{subtitle}{size=\bf\large\normalfont\slshape}
+
+\mode<presentation> % mode pour les présentations
+
+\useinnertheme[shadow=true]{lihlith} 
+\useoutertheme{lihlith}
+\usecolortheme{lihlith}
+
+\setbeamercolor{titlelike}{bg=white} 
+
+% marges gauche et droite du contenu des slides
+\setbeamersize{sidebar width left=0.03\paperwidth}
+\setbeamersize{sidebar width right=0.03\paperwidth}
+
+
+\logo{}% pour supprimer le logo de toutes les pages (mis autre part que la position par défaut)
+
+%%%%%%%%%%%%%%% PAGE DE TITRE %%%%%%%%%%%%%%%%%%%%%%
+% mise en page de la page de titre
+\setbeamertemplate{title page}{%
+\begin{tikzpicture}[remember picture,overlay,shift={(current page.south west)}]
+  % rectangle orange du haut
+  %\draw (0,0) grid (20,20) ;
+  \draw [orange, fill=beamer@lihlithorange] (0,2.3) -- (13.5,5) -- (13.5,10) -- (0,10) -- cycle;
+    
+    
+% auteurs et institut
+\node[anchor=west] 
+  at ([yshift=-10pt]current page.west) (author)
+  {\parbox[t]{.6\paperwidth}{\raggedright%
+    \usebeamerfont{author}\textcolor{beamer@lihlithblack}{%
+    \textpdfrender{
+    %TextRenderingMode=FillStroke,
+    FillColor=beamer@lihlithblack,
+    LineWidth=.1ex,
+    }{\insertauthor}}}};
+\node[anchor=west] 
+  at ([yshift=-10pt,xshift=-30pt]current page.west) (institute)
+  {\parbox[t]{.78\paperwidth}{\raggedleft%
+    \usebeamerfont{institute}\textcolor{beamer@lihlithblack}{\insertinstitute}}};
+
+% titre et sous-titre
+\node[anchor=east]
+  at ([yshift=-50pt]current page.north east) (title)
+  {\parbox[t]{.6\paperwidth}{\raggedright%
+    \usebeamerfont{title}\textcolor{beamer@lihlithblack}{%
+    \textpdfrender{
+    %TextRenderingMode=FillStroke,
+    FillColor=beamer@lihlithblack,
+    LineWidth=.1ex,
+    }{\inserttitle}}}};
+\node[anchor=east]%east
+  at ([yshift=-100pt]current page.north east) (subtitle)
+  {\parbox[t]{.6\paperwidth}{\raggedright%
+    \usebeamerfont{subtitle}\textcolor{beamer@lihlithblack}{%
+    \textpdfrender{
+    %TextRenderingMode=FillStroke,
+    FillColor=beamer@lihlithblack,
+    LineWidth=.1ex,
+    }{\insertsubtitle}}}};
+
+
+  \node[anchor=south west] at ([yshift=80pt,xshift=170pt] current page.south west) {\textcolor{beamer@lihlithgrey}{\small{\url{http://ixa2.si.ehu.eus/lihlith/}}}} ;
+  
+\node[anchor=south west] at (current page.south west) {\includegraphics[height=1.40cm]{chistera_logo.png}};
+\node[anchor=south west] at ([yshift=1.3pt,xshift=60pt] current page.south west) {\includegraphics[height=1.10cm]{lihlith.png}};
+\node[anchor=south west] at ([yshift=36pt,xshift=300pt] current page.south west) {\bf\textcolor{beamer@lihlithorange2}{LIHLITH:}};
+\node[anchor=south west] at ([yshift=18pt,xshift=170pt] current page.south west) {\bf\textcolor{beamer@lihlithorange2}{Learning to Interact with Humans}};
+\node[anchor=south west] at ([yshift=1.5pt,xshift=155pt] current page.south west) {\bf\textcolor{beamer@lihlithorange2}{by Lifelong Interaction with Humans}};
+  
+\end{tikzpicture}
+
+}
+%%%%%%%%%%%%%%% FIN PAGE DE TITRE %%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+%\usepackage{newcent}
+
+\mode
+<all>

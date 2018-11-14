@@ -1,0 +1,97 @@
+%\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/outer/beamerouterthemelihlith.sty,v 0.1 2006/08/21 23:29:48 fgadaud Exp $
+
+% Copyright 2006 by Fabrice Gadaud
+% Copyright 2003 by Till Tantau <tantau@users.sourceforge.net>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+
+
+\mode<presentation>
+
+% redéfinit les couleurs des éléments du pied de page
+\setbeamercolor*{author in head/foot}{fg=beamer@lihlithorange}
+\setbeamercolor*{title in head/foot}{fg=beamer@lihlithorange}
+\setbeamercolor*{date in head/foot}{fg=beamer@lihlithblack}
+
+%supprimer les symboles de navigation
+\defbeamertemplate*{navigation symbols} {}
+
+
+
+\defbeamertemplate*{footline}{infolines theme}
+{
+    \ifnum \insertpagenumber=1
+    \leavevmode%
+      % \begin{center}
+      %     \textcolor{white}{Laboratoire d'Informatique pour la Mécanique et les Sciences de l'Ingénieur\\
+      %     Campus Universitaire Bât. 508 -- F-91405 Orsay cedex\\
+      %     \url{www.limsi.fr}}
+      %  \end{center}%
+      %  \vspace{-.2cm}
+    \else
+  \leavevmode%
+  %\hskip.118\paperwidth%
+  \begin{tikzpicture}[remember picture,overlay,shift={(current page.south west)}]    
+    \fill [color=beamer@lihlithorange] (0,0) rectangle (13.5,0.7) ;
+    \node[anchor=south west] at ([yshift=1.3pt,xshift=5pt] current page.south west) {\includegraphics[height=0.5cm]{lihlith.png}};
+    \node[anchor=south west] at ([yshift=5pt,xshift=50pt] current page.south west) {\insertshortdate{}};
+    \node[anchor=south west] at ([yshift=5pt,xshift=150pt] current page.south west) {\insertshorttitle};
+    \node[anchor=south west] at ([yshift=5pt,xshift=340pt] current page.south west) {\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} };
+  \end{tikzpicture}
+
+  %\hbox{\color{beamer@limsigreen}\vrule width .882\paperwidth height1pt}
+
+ 
+  \vskip1pt%
+      \fi
+}
+
+
+
+%\defbeamertemplate*{footline}{title page}
+%{
+%\begin{center}
+%\textcolor{white}{Laboratoire d'Informatique pour la Mécanique et les Sciences de l'Ingénieur}
+%\end{center}
+%}
+
+\defbeamertemplate*{headline}{lihlith theme}{
+}
+
+
+\defbeamertemplate*{frametitle}{lihlith theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.76\paperwidth,dp=0ex,center]{frametitle}
+    \usebeamerfont{frametitle}%
+      \vspace{-15pt}
+    \color{beamer@lihlithblack}%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {
+      \usebeamerfont{framesubtitle}\color{beamer@lihlithblack}\insertframesubtitle\strut\par}%
+      \fi
+    }%
+  \end{beamercolorbox}}%
+
+
+\vskip .2em\vskip 0pt
+   \hbox{\hskip-100pt\hskip-.100\paperwidth\hspace*{.250\paperwidth}\color{beamer@lihlithorange}\vrule width .950\paperwidth height 3pt}%
+}
+
+
+
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\setbeamersize{text margin left=14pt,text margin right=10pt}
+
+
+
+\mode
+<all>
